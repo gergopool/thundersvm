@@ -100,7 +100,7 @@ class SvmModel(ThundersvmBase):
         solver_type = SVM_TYPE.index(self._impl)
 
         if self.gamma == 'auto':
-            self._gamma = 1.0 / X.shape[1]
+            self._gamma = 1.0 / X.shape[1] / X.var()
         else:
             self._gamma = self.gamma
         if self.kernel not in KERNEL_TYPE:
